@@ -5,14 +5,20 @@ username = "#"
 api_key = "#"
 africastalking.initialize(username,api_key)
 
-#recipients
-recipients = ['+254...']
+def recipients():
+    #list of recipients numbers
+    recipients = ["+254746256084"]
+    return recipients 
 
-#message
-message = input("Enter your message: ")
+def message():
+    #message to be sent 
+    message = "huncho in this bitch"
+    return message
 
-#initialize the service, in our case, SMS
-sms = africastalking.SMS
+def init_sms():
+    #initialize the service, in our case, SMS
+    sms = africastalking.SMS
+    return sms 
 
 #USE THE SERVICE
 def on_finish(error, response):
@@ -21,4 +27,8 @@ def on_finish(error, response):
     print(response)
 
 #sms.send("Bulk SMS sending, testing phase 2. From PaulWababu", recipients, callback=on_finish)
-sms.send(message, recipients, callback=on_finish)
+
+recipients = recipients()
+message = message()
+
+init_sms().send(message, recipients, callback=on_finish)
